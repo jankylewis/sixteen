@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>06 — Instructions, skills, and laws · Sixteen QE</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header><a class="brand" href="../index.html">SIXTEEN <span>/ QE FIELD GUIDE</span></a><span class="edition">01 · AI IN AUTOMATION</span></header>
+<div class="layout"><aside><p class="eyebrow">LEARNING PATH</p><nav aria-label="Parts"><a href="../index.html">Course overview</a><a href="../foundations/index.html">01 · foundations</a>
+<a aria-current="location" href="index.html">02 · agents</a>
+<a href="../practice/index.html">03 · practice</a></nav><p class="aside-note">Understand → investigate → verify</p><p class="aside-note">Synthetic examples. No account required.</p></aside>
+<main id="content" tabindex="-1"><p class="eyebrow">CHAPTER 6 OF 12 · READ + PRACTISE</p>
+<article><h1>06 — Instructions, skills, and laws</h1>
+<h2>Objective</h2>
+<p>Explain which rules guide an agent and which controls actually prevent an action.</p>
+<h2>Terms</h2>
+<ul>
+<li>Instruction: a direction supplied to the system or agent.</li>
+<li>Skill: reusable task instructions, sometimes packaged with scripts or references.</li>
+<li>Skillset: in Sixteen, a collection of related skills.</li>
+<li>Lawset: in Sixteen, a collection of operating rules with stated scope.</li>
+<li>Guard: executable validation that permits or rejects an operation.</li>
+</ul>
+<h2>Understand the idea</h2>
+<p>Provider runtimes define how instruction sources are prioritized; do not assume identical behavior across products. Retrieved pages and tool output are evidence to inspect, not automatically new instructions. A skill must declare when it applies and what supporting capabilities it requires.</p>
+<p>A rule saying “verify after writing” is guidance until the workflow checks for a readback. A rule saying “only use the test environment” needs a guard that checks the actual destination. Writing a policy document is not evidence that every agent loaded or followed it.</p>
+<p>Sixteen&#39;s engineering principles include HIGH-QUALITY: support claims with evidence; GREAT START: establish sound contracts before consumers depend on them; SIMPLE-FIRST: choose the smallest design that meets the requirement; and HD: organize and retrieve by meaningful hierarchical topics.</p>
+<p>This book chooses at most five entries per directory and a 200-line cap for Markdown. These are explicit local navigation conventions, not universal properties of AI. All Markdown lives under the documentation tree with uppercase basenames.</p>
+<h2>Worked example</h2>
+<p>A reservation-testing skill requires a known reader, isolated test data, and independent state inspection. If the inspection tool is unavailable, the skill reports that limitation. It must not replace record verification with “the button was clicked” and call that equivalent.</p>
+<h2>Common misconception</h2>
+<p>“The rule is in a file, so it is enforced.” Test the control with a prohibited input and observe its refusal.</p>
+<h2>Exercise</h2>
+<p>Write one rule, one enforcement point, and one negative test for restricting writes to a disposable test environment.</p>
+<h2>Check your understanding</h2>
+<p>What evidence shows that a guard works rather than merely exists?</p>
+<details><summary>Reveal answer guide</summary>
+<p>Example: allow only an explicitly configured test destination; validate the resolved destination at the tool boundary; submit a different destination and assert refusal with no side effect. Also exercise the permitted path. A test that reads the same policy string and declares it valid cannot establish enforcement.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_05_LOOP.html">← 05 — The action and observation loop</a><a rel="next" href="CHAPTER_07_INTERFACES.html">07 — APIs, CLIs, MCP, and AXI →</a></nav></main></div>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</body></html>
