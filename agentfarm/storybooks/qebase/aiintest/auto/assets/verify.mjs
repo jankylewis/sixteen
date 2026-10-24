@@ -10,6 +10,15 @@ const required = ['Objective', 'Terms', 'Understand the idea', 'Worked example',
 let links = 0;
 let chapters = 0;
 let pages = 0;
+const stylesheet = await readFile(join(book, 'assets/style.css'), 'utf8');
+assert(!stylesheet.includes('@import'), 'The offline reader must not import remote styles');
+for (const match of stylesheet.matchAll(/url\('([^']+)'\)/g)) {
+  assert(!match[1].includes(':'), 'Font assets must be local');
+  assert((await stat(resolve(book, 'assets', match[1]))).isFile(), 'Missing local font');
+}
+const font = await readFile(join(book, 'assets/typography/PressStart2P-Regular.ttf'));
+assert.equal(font.readUInt32BE(0), 0x00010000, 'Expected a TrueType font');
+assert((await readFile(join(book, 'assets/typography/OFL.txt'), 'utf8')).includes('SIL OPEN FONT LICENSE'), 'Missing font license');
 
 async function walk(root) {
   const entries = await readdir(root, { withFileTypes: true });
@@ -55,7 +64,7 @@ for (const file of await walk(book)) {
   assert(html.includes('lang="en"') && html.includes('name="viewport"'), `Missing page metadata: ${file}`);
   assert(!html.includes('<script'), `Reading should not need scripts: ${file}`);
   if (file.includes('/CHAPTER_')) {
-    assert(html.includes('<details><summary>Reveal answer guide</summary>'), `Missing answer disclosure: ${file}`);
+    assert(html.includes('<summary>Reveal answer guide</summary>'), `Missing answer disclosure: ${file}`);
     assert(html.includes('aria-label="Chapter navigation"'), `Missing sequential navigation: ${file}`);
   }
   for (const match of html.matchAll(/href="([^"]+)"/g)) await checkLink(file, match[1]);

@@ -3,13 +3,12 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
 <title>02 — Tokens, prompts, and uncertainty · Sixteen QE</title><link rel="stylesheet" href="../assets/style.css"></head>
-<body><a class="skip" href="#content">Skip to content</a>
-<header><a class="brand" href="../index.html">SIXTEEN <span>/ QE FIELD GUIDE</span></a><span class="edition">01 · AI IN AUTOMATION</span></header>
-<div class="layout"><aside><p class="eyebrow">LEARNING PATH</p><nav aria-label="Parts"><a href="../index.html">Course overview</a><a aria-current="location" href="index.html">01 · foundations</a>
-<a href="../agents/index.html">02 · agents</a>
-<a href="../practice/index.html">03 · practice</a></nav><p class="aside-note">Understand → investigate → verify</p><p class="aside-note">Synthetic examples. No account required.</p></aside>
-<main id="content" tabindex="-1"><p class="eyebrow">CHAPTER 2 OF 12 · READ + PRACTISE</p>
-<article><h1>02 — Tokens, prompts, and uncertainty</h1>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">A · FOUNDATIONS</a><a class="tag c" href="CHAPTER_01_MODELS.html">01 · MODELS</a><a class="tag " aria-current="page" href="CHAPTER_02_PROMPTS.html">02 · PROMPTS</a><a class="tag c" href="CHAPTER_03_CONTEXT.html">03 · CONTEXT</a><a class="tag c" href="CHAPTER_04_AGENTS.html">04 · AGENTS</a></div>
+<div class="row"><a class="tag g" href="../agents/index.html">B · AGENTS</a><a class="tag c" href="../agents/CHAPTER_05_LOOP.html">05 · LOOP</a><a class="tag c" href="../agents/CHAPTER_06_SKILLS.html">06 · SKILLS</a><a class="tag c" href="../agents/CHAPTER_07_INTERFACES.html">07 · INTERFACES</a><a class="tag c" href="../agents/CHAPTER_08_TRUST.html">08 · TRUST</a></div>
+<div class="row"><a class="tag g" href="../practice/index.html">C · PRACTICE</a><a class="tag c" href="../practice/CHAPTER_09_HARNESS.html">09 · HARNESS</a><a class="tag c" href="../practice/CHAPTER_10_TESTS.html">10 · TESTS</a><a class="tag c" href="../practice/CHAPTER_11_INVESTIGATION.html">11 · INVESTIGATE</a><a class="tag c" href="../practice/CHAPTER_12_CAPSTONE.html">12 · CAPSTONE</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 2 OF 12</span></p>
+<article><h1>02 — Tokens, prompts, and uncertainty</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">PROMPT<small>task and boundaries</small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">TOKENS<small>encoded input</small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">ANSWER<small>review for support</small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
 <h2>Objective</h2>
 <p>Write a bounded request and distinguish output format from factual correctness.</p>
 <h2>Terms</h2>
@@ -24,17 +23,25 @@
 <p>Text becomes token IDs before model processing. Tokens are not reliably one word each. Instructions, conversation, retrieved material, and tool results all consume space. Exact accounting depends on the model and interface.</p>
 <p>An autoregressive language model generates a sequence by repeatedly predicting a next token from the available context. Attention is a mechanism for combining information from different positions. This can support useful reasoning, but it does not guarantee that a generated statement matches the world.</p>
 <p>A decoding setting such as temperature can affect output variation when the model supports it. Lower variation does not establish correctness or complete reproducibility. A schema can ensure an answer has a field called “verdict”; it cannot ensure that the verdict is justified.</p>
+<section class="box cyan">
 <h2>Worked example</h2>
 <p>Weak request: “Test reservations.” Better request: “Using only the requirement below, draft three duplicate-reservation scenarios. For each, state preconditions, action, expected result, and needed evidence. Do not claim execution. List missing information.” Then supply the requirement from the book index.</p>
 <p>The improved request names the task, source, output shape, and boundary. It still needs review: the model might assume a reader role or response code the requirement never specified.</p>
+</section>
+<section class="box rose">
 <h2>Common misconception</h2>
 <p>“Valid JSON means a valid result.” Syntax and evidence are different checks.</p>
+</section>
+<section class="box amber">
 <h2>Exercise</h2>
 <p>Rewrite “Fix the failing test” into a request that asks for investigation first, identifies the available evidence, and forbids weakening the assertion simply to obtain a pass.</p>
+</section>
 <h2>Check your understanding</h2>
 <p>If two identical prompts produce the same wrong assertion, has repetition validated it?</p>
-<details><summary>Reveal answer guide</summary>
+<details class="box green"><summary>Reveal answer guide</summary>
 <p>A useful request names the failing run, test, requirement, and environment; asks for competing explanations and a discriminating check; and permits changes only after the defect is located. Repetition measures consistency here, not correctness. Check the assertion against an independently stated requirement and known failing behavior.</p>
-</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_01_MODELS.html">← 01 — AI, learning, and language models</a><a rel="next" href="CHAPTER_03_CONTEXT.html">03 — Context, retrieval, and memory →</a></nav></main></div>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_01_MODELS.html">← 01 — AI, learning, and language models</a><a rel="next" href="CHAPTER_03_CONTEXT.html">03 — Context, retrieval, and memory →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">A · FOUNDATIONS</a><a class="tag c" href="CHAPTER_01_MODELS.html">01 · MODELS</a><a class="tag " aria-current="page" href="CHAPTER_02_PROMPTS.html">02 · PROMPTS</a><a class="tag c" href="CHAPTER_03_CONTEXT.html">03 · CONTEXT</a><a class="tag c" href="CHAPTER_04_AGENTS.html">04 · AGENTS</a></div>
+<div class="row"><a class="tag g" href="../agents/index.html">B · AGENTS</a><a class="tag c" href="../agents/CHAPTER_05_LOOP.html">05 · LOOP</a><a class="tag c" href="../agents/CHAPTER_06_SKILLS.html">06 · SKILLS</a><a class="tag c" href="../agents/CHAPTER_07_INTERFACES.html">07 · INTERFACES</a><a class="tag c" href="../agents/CHAPTER_08_TRUST.html">08 · TRUST</a></div>
+<div class="row"><a class="tag g" href="../practice/index.html">C · PRACTICE</a><a class="tag c" href="../practice/CHAPTER_09_HARNESS.html">09 · HARNESS</a><a class="tag c" href="../practice/CHAPTER_10_TESTS.html">10 · TESTS</a><a class="tag c" href="../practice/CHAPTER_11_INVESTIGATION.html">11 · INVESTIGATE</a><a class="tag c" href="../practice/CHAPTER_12_CAPSTONE.html">12 · CAPSTONE</a></div></nav>
 <footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
-</body></html>
+</div></body></html>

@@ -3,13 +3,12 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
 <title>03 — Context, retrieval, and memory · Sixteen QE</title><link rel="stylesheet" href="../assets/style.css"></head>
-<body><a class="skip" href="#content">Skip to content</a>
-<header><a class="brand" href="../index.html">SIXTEEN <span>/ QE FIELD GUIDE</span></a><span class="edition">01 · AI IN AUTOMATION</span></header>
-<div class="layout"><aside><p class="eyebrow">LEARNING PATH</p><nav aria-label="Parts"><a href="../index.html">Course overview</a><a aria-current="location" href="index.html">01 · foundations</a>
-<a href="../agents/index.html">02 · agents</a>
-<a href="../practice/index.html">03 · practice</a></nav><p class="aside-note">Understand → investigate → verify</p><p class="aside-note">Synthetic examples. No account required.</p></aside>
-<main id="content" tabindex="-1"><p class="eyebrow">CHAPTER 3 OF 12 · READ + PRACTISE</p>
-<article><h1>03 — Context, retrieval, and memory</h1>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">A · FOUNDATIONS</a><a class="tag c" href="CHAPTER_01_MODELS.html">01 · MODELS</a><a class="tag c" href="CHAPTER_02_PROMPTS.html">02 · PROMPTS</a><a class="tag " aria-current="page" href="CHAPTER_03_CONTEXT.html">03 · CONTEXT</a><a class="tag c" href="CHAPTER_04_AGENTS.html">04 · AGENTS</a></div>
+<div class="row"><a class="tag g" href="../agents/index.html">B · AGENTS</a><a class="tag c" href="../agents/CHAPTER_05_LOOP.html">05 · LOOP</a><a class="tag c" href="../agents/CHAPTER_06_SKILLS.html">06 · SKILLS</a><a class="tag c" href="../agents/CHAPTER_07_INTERFACES.html">07 · INTERFACES</a><a class="tag c" href="../agents/CHAPTER_08_TRUST.html">08 · TRUST</a></div>
+<div class="row"><a class="tag g" href="../practice/index.html">C · PRACTICE</a><a class="tag c" href="../practice/CHAPTER_09_HARNESS.html">09 · HARNESS</a><a class="tag c" href="../practice/CHAPTER_10_TESTS.html">10 · TESTS</a><a class="tag c" href="../practice/CHAPTER_11_INVESTIGATION.html">11 · INVESTIGATE</a><a class="tag c" href="../practice/CHAPTER_12_CAPSTONE.html">12 · CAPSTONE</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 3 OF 12</span></p>
+<article><h1>03 — Context, retrieval, and memory</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">INDEX<small>choose a topic</small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">LEAF<small>inspect provenance</small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">CONTEXT<small>selected evidence</small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
 <h2>Objective</h2>
 <p>Select relevant evidence without treating stored text as authority.</p>
 <h2>Terms</h2>
@@ -28,16 +27,24 @@
 Question → topic index → selected evidence → checked context → answer
 
 </code></pre>
+<section class="box cyan">
 <h2>Worked example</h2>
 <p>A note says “duplicate reservations passed.” A useful record says which version, reader role, initial state, actions, observed responses, and record count were checked. It also says whether concurrent requests were tested. That lets the next QE judge relevance rather than assume universal coverage.</p>
+</section>
+<section class="box rose">
 <h2>Common misconception</h2>
 <p>“It is in memory, so it is true.” Memory preserves claims, including mistaken and stale ones.</p>
+</section>
+<section class="box amber">
 <h2>Exercise</h2>
 <p>Write a five-line handoff for a duplicate-reservation investigation. Include a requirement reference, observed result, environment identity without credentials, unresolved question, and next check.</p>
+</section>
 <h2>Check your understanding</h2>
 <p>Would storing an entire raw conversation necessarily produce a better handoff?</p>
-<details><summary>Reveal answer guide</summary>
+<details class="box green"><summary>Reveal answer guide</summary>
 <p>A good handoff distinguishes expected from observed behavior, records a reproducible scope, and points to sanitized evidence. For example: “Serial duplicate rejected; concurrent behavior untested; next run two requests against the same synthetic reader/book pair.” A raw conversation can contain secrets, obsolete hypotheses, and irrelevant detail. Preserve the useful facts and limitations instead.</p>
-</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_02_PROMPTS.html">← 02 — Tokens, prompts, and uncertainty</a><a rel="next" href="CHAPTER_04_AGENTS.html">04 — Chatbots, workflows, and agents →</a></nav></main></div>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_02_PROMPTS.html">← 02 — Tokens, prompts, and uncertainty</a><a rel="next" href="CHAPTER_04_AGENTS.html">04 — Chatbots, workflows, and agents →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">A · FOUNDATIONS</a><a class="tag c" href="CHAPTER_01_MODELS.html">01 · MODELS</a><a class="tag c" href="CHAPTER_02_PROMPTS.html">02 · PROMPTS</a><a class="tag " aria-current="page" href="CHAPTER_03_CONTEXT.html">03 · CONTEXT</a><a class="tag c" href="CHAPTER_04_AGENTS.html">04 · AGENTS</a></div>
+<div class="row"><a class="tag g" href="../agents/index.html">B · AGENTS</a><a class="tag c" href="../agents/CHAPTER_05_LOOP.html">05 · LOOP</a><a class="tag c" href="../agents/CHAPTER_06_SKILLS.html">06 · SKILLS</a><a class="tag c" href="../agents/CHAPTER_07_INTERFACES.html">07 · INTERFACES</a><a class="tag c" href="../agents/CHAPTER_08_TRUST.html">08 · TRUST</a></div>
+<div class="row"><a class="tag g" href="../practice/index.html">C · PRACTICE</a><a class="tag c" href="../practice/CHAPTER_09_HARNESS.html">09 · HARNESS</a><a class="tag c" href="../practice/CHAPTER_10_TESTS.html">10 · TESTS</a><a class="tag c" href="../practice/CHAPTER_11_INVESTIGATION.html">11 · INVESTIGATE</a><a class="tag c" href="../practice/CHAPTER_12_CAPSTONE.html">12 · CAPSTONE</a></div></nav>
 <footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
-</body></html>
+</div></body></html>

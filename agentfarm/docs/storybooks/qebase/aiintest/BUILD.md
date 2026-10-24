@@ -21,6 +21,10 @@ node --test agentfarm/storybooks/qebase/aiintest/auto/assets/test.mjs
 
 Node is only a static publishing/checking tool here. This does not choose the future agent harness implementation language. The book has no runtime dependencies or package installation step.
 
+## Presentation style and font
+
+The reader uses a dark purple pixel grid, Press Start 2P headings, monospace body text, chunky colored frames, navigation tags, and concept diagrams. The pixel font is bundled locally so reading requires no Google Fonts request. Its upstream is [Google Fonts: Press Start 2P](https://github.com/google/fonts/tree/main/ofl/pressstart2p); the original SIL Open Font License is retained at `assets/typography/OFL.txt` beside the unmodified font. All teaching examples remain public and fictional.
+
 ## Hierarchical decomposition
 
 The source root has a book index and three meaningful part directories. Each part has its index and four chapters. The rendered root adds one assets directory. Each directory within these book trees has at most five entries. Readers navigate one index at a time to a selected leaf. Do not flatten the book or raise the cap to avoid splitting a topic.
