@@ -14,7 +14,7 @@ async function fixture(run) {
   const output = join(root, 'storybooks/qebase/aiintest/auto');
   const source = join(root, 'docs/storybooks/qebase/aiintest/auto');
   try {
-    await cp(book, output, { recursive: true });
+    await cp(book, output, { recursive: true, filter: (path) => !['node_modules', 'test-results', 'learning-output'].some((name) => path.split('/').includes(name)) });
     await cp(docs, source, { recursive: true });
     await run({ output, source });
   } finally {
@@ -42,7 +42,7 @@ test('valid published book passes structural and regeneration checks', async () 
 
 test('a missing chapter is rejected through its inbound links', async () => {
   await fixture(async ({ output }) => {
-    await unlink(join(output, 'foundations/CHAPTER_01_MODELS.html'));
+    await unlink(join(output, 'course/understand/CHAPTER_01.html'));
     const result = runCheck(output, 'verify.mjs');
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /ENOENT|Missing file/);
@@ -60,7 +60,7 @@ test('hand-edited HTML is rejected as stale generated output', async () => {
 
 test('a sixth entry is rejected rather than silently flattening HD', async () => {
   await fixture(async ({ output, source }) => {
-    await writeFile(join(source, 'foundations/EXTRA.md'), '# Extra\n');
+    await writeFile(join(source, 'course/understand/EXTRA.md'), '# Extra\n');
     const result = runCheck(output, 'verify.mjs');
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /HD fan-out exceeded/);
@@ -69,7 +69,7 @@ test('a sixth entry is rejected rather than silently flattening HD', async () =>
 
 test('over-limit Markdown is rejected', async () => {
   await fixture(async ({ output, source }) => {
-    await appendFile(join(source, 'foundations/CHAPTER_01_MODELS.md'), '\nextra line'.repeat(201));
+    await appendFile(join(source, 'course/understand/CHAPTER_01.md'), '\nextra line'.repeat(201));
     const result = runCheck(output, 'verify.mjs');
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /Markdown line cap/);

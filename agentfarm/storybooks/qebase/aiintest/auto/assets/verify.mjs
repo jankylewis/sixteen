@@ -5,8 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const book = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const sources = resolve(book, '../../../../docs/storybooks/qebase/aiintest/auto');
-const required = ['Objective', 'Terms', 'Understand the idea', 'Worked example',
-  'Common misconception', 'Exercise', 'Check your understanding', 'Answer guide'];
+const required = ['Outcome', 'Know', 'Worked example', 'Starter prompt', 'Do', 'Verify', 'Deliver', 'Exercise', 'Answer guide'];
 let links = 0;
 let chapters = 0;
 let pages = 0;
@@ -21,7 +20,7 @@ assert.equal(font.readUInt32BE(0), 0x00010000, 'Expected a TrueType font');
 assert((await readFile(join(book, 'assets/typography/OFL.txt'), 'utf8')).includes('SIL OPEN FONT LICENSE'), 'Missing font license');
 
 async function walk(root) {
-  const entries = await readdir(root, { withFileTypes: true });
+  const entries = (await readdir(root, { withFileTypes: true })).filter((entry) => !['node_modules', 'test-results', 'learning-output', 'playwright-report'].includes(entry.name));
   assert(entries.length <= 5, `HD fan-out exceeded: ${root}`);
   const files = [];
   for (const entry of entries) {
@@ -57,7 +56,7 @@ for (const file of await walk(sources)) {
   }
 }
 for (const file of await walk(book)) {
-  if (!file.endsWith('.html')) continue;
+  if (!file.endsWith('.html') || file.includes('/lab/')) continue;
   pages += 1;
   const html = await readFile(file, 'utf8');
   assert.equal((html.match(/<h1>/g) ?? []).length, 1, `Expected one title: ${file}`);
@@ -69,6 +68,6 @@ for (const file of await walk(book)) {
   }
   for (const match of html.matchAll(/href="([^"]+)"/g)) await checkLink(file, match[1]);
 }
-assert.equal(chapters, 12, 'Expected twelve chapters');
-assert.equal(pages, 16, 'Expected twelve chapters and four indexes');
+assert.equal(chapters, 21, 'Expected twenty-one chapters');
+assert.equal(pages, 29, 'Expected twenty-one chapters and eight indexes');
 console.log(`PASS: ${chapters} chapter contracts; ${pages} HTML pages; ${links} local links; HD and Markdown limits.`);

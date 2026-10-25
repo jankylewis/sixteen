@@ -1,0 +1,15 @@
+{
+  "name": "sixteen-qe-learning-lab",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node app/server.mjs",
+    "test": "node --test tests/api.test.mjs tests/harness.test.mjs",
+    "test:ui": "playwright test --config tools/playwright.config.mjs browser.spec.mjs",
+    "test:book": "playwright test --config tools/playwright.config.mjs book.spec.mjs",
+    "prove": "node tools/prove.mjs",
+    "agent": "node tools/agent.mjs"
+  },
+  "devDependencies": { "@playwright/test": "1.58.2" }
+}

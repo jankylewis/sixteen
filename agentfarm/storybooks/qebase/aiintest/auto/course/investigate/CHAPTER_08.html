@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>08 — Prepare trustworthy test data · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag " aria-current="page" href="CHAPTER_08.html">08 · DATA</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 8 OF 21</span></p>
+<article><h1>08 — Prepare trustworthy test data</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">OWN DATA<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">ISOLATE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">CLEAN UP<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A fixture plan describing ownership, initial state, cleanup, and parallel behavior.</p>
+<h2>Know</h2>
+<p>Tests must control the state they rely on. A fixture is repeatable setup for a scenario. Isolation prevents one test from modifying another’s assumptions. The lab uses reader IDs to scope records, but restarting a shared server resets everybody’s state. For automated tests, each scenario starts its own server on an operating-system-assigned port and closes it afterward. This avoids global reset races.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>Two tests share qe-one and assume zero records. Whichever runs second may see a duplicate before its intended action. Retrying may reverse their order and hide the collision. Independent servers give each test a fresh record collection. On a real shared service, use unique scoped data and clean up only what your test owns.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Review this setup: two parallel tests use reader qe-one on one server and each resets all reservations. Identify the interference risk. Propose isolation using one disposable server per test. Preserve the duplicate scenario within each test; do not use a new reader between its first and second requests.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Restart the manual demo and read qe-data before writing. Reserve book-1, switch to qe-other, and read again. Record the expected isolation. Inspect tests/api.test.mjs to see scenario start and finally cleanup. Do not run a global reset against another person’s environment. Use the provided test-owned server approach for the automated labs.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Baseline and readback must share the same reader/book identity. Verify qe-other sees an empty successful collection, not a transport failure. Confirm teardown executes even after an assertion failure by checking the finally block and the failing-first run in Chapter 11.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A fixture plan describing ownership, initial state, cleanup, and parallel behavior.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Would giving each request a different random reader make a duplicate test safer?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>No. It removes the duplicate condition. Isolation belongs between scenarios, while the two duplicate attempts must use the same pair within one scenario. A green result after changing that identity no longer proves R2.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_07.html">← 07 — Explore with browser tools and MCP</a><a rel="next" href="../automate/CHAPTER_09.html">09 — Choose the right test layer →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag " aria-current="page" href="CHAPTER_08.html">08 · DATA</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

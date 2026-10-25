@@ -2,7 +2,7 @@
 
 Sixteen aims to make the full AgentFarm capability set available to the world as a public, general-purpose project.
 
-This repository contains the initial scaffold and an introductory QE storybook. Runtime components and executable skills are not implemented yet.
+This repository contains the initial scaffold and a practical QE storybook with a local learning lab. Runtime components and executable skills are not implemented yet.
 
 ## Structure
 
@@ -26,4 +26,4 @@ Read [VISION.md](VISION.md) for the public boundary and [DEVELOPMENT.md](DEVELOP
 
 ## Learn AI-assisted quality engineering
 
-Start with the [AI agents for QE storybook](storybooks/qebase/aiintest/auto/INDEX.md): twelve chapters from model fundamentals to a paper-based harness capstone. The rendered edition lives at `agentfarm/storybooks/qebase/aiintest/auto/index.html`; see [build and review instructions](storybooks/qebase/aiintest/BUILD.md).
+Start with the [AI agents for QE storybook](storybooks/qebase/aiintest/auto/INDEX.md): 21 chapters from AI task briefs to a tested automation change, with a runnable demo, API/browser tests, and a bounded harness lab. The rendered edition lives at `agentfarm/storybooks/qebase/aiintest/auto/index.html`; see [build and review instructions](storybooks/qebase/aiintest/BUILD.md).

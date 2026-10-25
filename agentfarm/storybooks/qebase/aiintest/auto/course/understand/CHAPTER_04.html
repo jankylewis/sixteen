@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>04 — Review AI work before trusting it · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag " aria-current="page" href="CHAPTER_04.html">04 · REVIEW</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 4 OF 21</span></p>
+<article><h1>04 — Review AI work before trusting it</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">REQUIREMENT<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">AI DRAFT<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">INDEPENDENT CHECK<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A corrected manual scenario and a review checklist you will reuse for generated code.</p>
+<h2>Know</h2>
+<p>An oracle is the basis for expected behavior, normally a requirement or independently derived contract. A hypothesis is a possible explanation; an observation is what a tool returned under recorded conditions. Hallucinations are generated claims unsupported by the relevant evidence. Review is an active comparison against an oracle, not a confidence rating. Readback inspects the result after a write and must be able to disagree with the write request.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>Bad draft: click Reserve twice; if a duplicate warning appears, pass. Hidden problem: the backend could show the warning while inserting a second record. Better draft: establish zero scoped records, perform both attempts, check their specified responses, then query the same reader/book and require exactly one record. We will make this hidden defect real in Chapter 11.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Review this draft against R2: “Click twice and pass if the duplicate warning appears.” Find what it fails to prove. Rewrite the precondition and final assertion using an independent read. Distinguish requirements from your suggestions. Do not claim the application has a defect yet.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Create a review checklist with traceability, identity scope, starting state, meaningful assertion, and evidence. Apply it to the weak draft before reading the assistant answer. Compare reviews and retain disagreements. A model agreement is useful feedback but is not independent execution proof.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>The revised case must fail if two records exist despite a warning. It must state how to identify the correct reader and book. Ask what happens if the read query fails; “zero records” is not an acceptable interpretation of a failed read.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A corrected manual scenario and a review checklist you will reuse for generated code.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Why is asking a second AI “is this test correct?” insufficient by itself?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>Both models may inherit the same assumptions and never execute the test. Use the requirement and a deliberately failing behavior as independent witnesses. Reviewers help find weaknesses; observable regression behavior establishes detection.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_03.html">← 03 — Give AI a clear task</a><a rel="next" href="../investigate/CHAPTER_05.html">05 — Meet the runnable demo application →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag " aria-current="page" href="CHAPTER_04.html">04 · REVIEW</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

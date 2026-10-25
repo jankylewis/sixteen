@@ -1,25 +1,37 @@
-# AI agents for quality engineering
+# AI in test automation
 
-Start with the ideas. Learn to question the evidence. Then build the harness.
+One small application. Twenty-one chapters. Learn to use AI to create, verify, and maintain trustworthy tests.
 
-This book is for a new quality engineer (QE): someone learning how to investigate software quality, design tests, and explain what those tests prove. No AI account, programming language, paid service, or internal system is required for the first twelve chapters. Allow about 15–25 minutes per chapter, including the exercise.
+## Start here
 
-## Your learning path
+You are a QE learning to apply AI, not a model researcher. Begin with four short foundations chapters, explore the local demo, and run your first automated test by Chapter 10. Each chapter contains a starter prompt, practical task, independent verification, deliverable, and exercise with an answer guide. Budget 20–40 minutes per chapter; installation and capstone work may take longer.
 
-- [Part 1 — Foundations](foundations/INDEX.md): models, prompts, context, and agents.
-- [Part 2 — Agent systems](agents/INDEX.md): execution loops, skills, interfaces, and trust.
-- [Part 3 — Quality engineering](practice/INDEX.md): harnesses, test evidence, investigation, and a capstone.
+An AI assistant is useful for the prompts but is not bundled or required to run the demo. If you rehearse without one, label the work as manual practice. Never fabricate a tool result or claim a scripted replay called a model.
 
-Read in order on your first visit. On later visits, open the relevant part index and select one chapter. This is hierarchical decomposition (HD): navigate by meaningful topics instead of loading the whole knowledge store.
+## Five parts
 
-## The example we will use
+- [Part 1 — Understand your AI assistant](course/understand/INDEX.md): chapters 1–4.
+- [Part 2 — Investigate before automating](course/investigate/INDEX.md): chapters 5–8.
+- [Part 3 — Build your first trustworthy test](course/automate/INDEX.md): chapters 9–12.
+- [Part 4 — Diagnose and maintain](course/maintain/INDEX.md): chapters 13–16.
+- [Part 5 — Make the workflow reusable with agents](course/reusable/INDEX.md): chapters 17–21.
 
-Pocket Library is a fictional application. A signed-in reader can reserve one available book. A successful reservation must create exactly one record for that reader and book. A second reservation for the same pair must be rejected. These are teaching requirements, not observations of a running application.
+## Your working materials
 
-Each chapter has an objective, terms, explanation, worked example, misconception, exercise, and answer guide. Try the exercise before opening the answer. A correct explanation matters more than remembering an acronym.
+The runnable lab is at agentfarm/storybooks/qebase/aiintest/auto/lab/ in this repository. Chapter 5 gives installation and startup steps. Use Node.js 22 or newer, npm, Git, a terminal, and a browser. API exercises need no external service. The browser test uses Playwright Chromium, installed once. This JavaScript teaching lab does not select Sixteen’s future backend language.
 
-## What this edition delivers
+Keep commands and observations in your own learning notebook. Store temporary test outputs in ignored learning-output or test-results directories; do not publish secrets, unrelated browser captures, or production data. All scenarios use fictional books and synthetic readers.
 
-This is a complete introductory learning path and paper-based capstone. It does not contain a working AI agent, browser automation framework, or deployed Pocket Library application. You will specify and inspect a harness before a later implementation course asks you to build one.
+## Course requirements
 
-Industry terms include model, agent, API, CLI, and MCP. Sixteen uses AXI for an agent-ergonomic CLI, lawset for a collection of operating rules, and skillset for reusable task instructions. These local conventions are not universal standards.
+- R1: the first reservation of available book-1 by a valid reader returns 201 and creates one record.
+- R2: a second reservation for that same pair returns 409 and creates no additional record.
+- R3: unavailable book-2 returns 409 and creates no record.
+- R4: GET reservations returns only records for the supplied synthetic X-Reader.
+- R5: malformed JSON, invalid reader IDs, unknown books, or unexpected fields return 400 without a write. Reader IDs contain 1–40 letters, digits, underscores, or hyphens.
+
+X-Reader is test-data partitioning, not authentication. Data is in memory and disappears on restart. This sandbox deliberately does not teach production identity, capacity allocation, or durable storage.
+
+## Finish with evidence
+
+Your capstone is a test change with scenario traceability, live investigation, meaningful assertions, relevant failing-first proof, and a reviewable handoff. A high test count, confident AI answer, or generated plan is not a substitute. Publishing and merging require the repository owner’s authorization.

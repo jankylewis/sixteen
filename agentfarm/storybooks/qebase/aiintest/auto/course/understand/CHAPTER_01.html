@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>01 — Where AI helps a QE · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 1 OF 21</span></p>
+<article><h1>01 — Where AI helps a QE</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">WORKFLOW<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">AI ASSISTANCE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">QE REVIEW<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A one-page workflow map in your learning notebook, with a human review point and an evidence artifact at each stage.</p>
+<h2>Know</h2>
+<p>Quality engineering is the work of investigating risks, designing useful checks, and explaining what the evidence supports. Test automation turns some checks into executable programs. AI can help draft, explore, implement, and diagnose; the QE still owns the requirement interpretation and the verdict. A generated test is a proposal until someone runs and reviews it. In this course you will work on Pocket Library, a tiny local reservation application, rather than memorize tool names.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>A weak AI answer says: “I tested reservations and everything works.” Ask where the run happened and what artifact supports the claim. If there is no execution record, relabel it as a proposed plan. Useful assistance would list duplicate-reservation risks and identify the state query needed to verify them. This prevents a polished explanation from replacing testing.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Act as my QE planning assistant. For a library where one reader may reserve an available book once, map the work from requirement review to regression testing. For each step, name what you can draft, what I must review, and what evidence requires a real tool run. Do not claim execution.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Write down how you currently receive a requirement and report a result. Send the starter prompt to any available AI assistant. Compare its answer with your workflow. Mark each suggestion as draft, observation, or decision. If no assistant is available, annotate the worked example; that is rehearsal, not an AI execution.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Look for an independent evidence source beside every completion claim. A proposed screenshot, fabricated log, or sentence saying “passed” is not evidence. Ensure the plan includes actual behavior and stored state, not only UI appearance.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A one-page workflow map in your learning notebook, with a human review point and an evidence artifact at each stage.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>An assistant gives you twenty cases in ten seconds. Which two checks should happen before those cases enter the automation backlog?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>Check their traceability to an agreed requirement and their distinct risk coverage. Volume and speed do not show that a case is meaningful, feasible, or correct. Record assumptions for clarification rather than converting them into requirements.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><span>Start of course</span><a rel="next" href="CHAPTER_02.html">02 — Models, assistants, and agents →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

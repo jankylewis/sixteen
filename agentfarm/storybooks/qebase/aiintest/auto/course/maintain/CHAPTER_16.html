@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>16 — Maintain tests as the product changes · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag " aria-current="page" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 16 OF 21</span></p>
+<article><h1>16 — Maintain tests as the product changes</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">CONTRACT DELTA<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">MINIMAL DIFF<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">REGRESSION<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A maintenance record containing the requirement delta, observed UI change, minimal diff, and regression evidence.</p>
+<h2>Know</h2>
+<p>Maintenance starts with a requirement delta. A changed UI label may require a locator update without changing business assertions. A changed reservation policy may require new scenarios and new expected state. Separate these changes. A selector repair must not silently loosen the duplicate invariant or make a test select the wrong control.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>Product changes the available button label from Reserve The Test Garden to Reserve book. The old accessible-name locator now fails. Updating that locator may be correct after observing the new page; replacing it with “first button on the page” is fragile. If the product also changes duplicate policy, request an explicit contract version rather than assuming the label change implies new behavior.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Given a proposed label-only change, identify which locator must change and which R1–R5 assertions must remain unchanged. Require a live observation of the new accessible name. Produce a minimal maintenance plan and regression scope, not a blind global replacement.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Use a disposable learning branch or copy. Change only the available button text, run the browser test to observe the locator failure, then update its exact accessible-name locator. Run the browser and API suites. Restore the course files afterward or keep the exercise in your own branch. The supplied book remains on the original label contract.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>The first failure should be at the old locator, not an unrelated startup error. After the locator update, the duplicate readback assertion must still execute. Compare the diff: only the intended UI label and its matching locator should change for this exercise.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A maintenance record containing the requirement delta, observed UI change, minimal diff, and regression evidence.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>When is changing test data a legitimate part of maintenance?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>When the approved preconditions or valid data contract changed, or the fixture was demonstrably wrong. Explain that reason and preserve the intended risk. Do not change a duplicate pair into two different readers merely to bypass a new failure.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_15.html">← 15 — Run in CI and read the results</a><a rel="next" href="../reusable/knowledge/CHAPTER_17.html">17 — Package the workflow as skills →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag " aria-current="page" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

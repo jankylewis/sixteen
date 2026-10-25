@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>15 — Run in CI and read the results · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag " aria-current="page" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 15 OF 21</span></p>
+<article><h1>15 — Run in CI and read the results</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">COMMIT<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">CI RUN<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">ARTIFACTS<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A CI report linking the commit, run, tested scope, and any unresolved environment differences.</p>
+<h2>Know</h2>
+<p>Continuous integration (CI) executes checks in a controlled remote environment when changes are proposed. A local pass does not guarantee the same runtime, browser installation, or filesystem assumptions exist in CI. Exit codes determine job success; retained logs and traces explain failures. A pipeline summary is not a substitute for checking which tests actually ran.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>A pipeline runs npm test successfully but never installs Chromium or runs test:ui. It has not verified the browser journey. The supplied workflow includes separate API/harness, fault-proof, and browser steps, with browser traces uploaded when present. The fault proof expects a deliberate inner red run while requiring the overall proof command to succeed.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Review .github/workflows/storybook.yml. List which learner behaviors are actually executed and which artifacts survive a failure. Check Node version, npm ci, browser installation, and test commands. Do not call UI coverage complete if only API checks ran.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Run the same local commands before pushing your learning branch:</p>
+<pre><code>
+npm ci
+
+npm test
+
+npm run prove
+
+npm run test:ui
+
+</code></pre>
+<p>Then open the PR Checks tab and inspect the job for your exact commit. If you have no push access, review the workflow and local outputs; label remote execution as not performed. Do not publish to someone else’s repository without authorization.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Check the tested commit, all named steps, test counts, and failures. Download a trace only from your own synthetic run; do not share raw artifacts from sensitive systems. Distinguish “workflow configured” from “workflow passed on this commit.”</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A CI report linking the commit, run, tested scope, and any unresolved environment differences.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Can you report a new change as CI-green because the previous commit passed?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>No. Read the status attached to the new head commit. If the job is queued, running, or blocked, say so. The old result can be historical context but cannot certify the new artifact.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_14.html">← 14 — Repair without hiding the defect</a><a rel="next" href="CHAPTER_16.html">16 — Maintain tests as the product changes →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag " aria-current="page" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>06 — Turn requirements into scenarios · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag " aria-current="page" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 6 OF 21</span></p>
+<article><h1>06 — Turn requirements into scenarios</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">REQUIREMENTS<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">RISKS<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">SCENARIOS<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A compact scenario matrix with R1–R5 coverage and explicit exclusions.</p>
+<h2>Know</h2>
+<p>A scenario states a starting condition, action, expected outcome, and evidence. Positive cases show intended use; negative cases reject invalid use; boundary cases probe limits. Do not multiply near-identical cases just to increase a count. Trace each case to a requirement. The lab reader format is 1–40 letters, digits, underscores, or hyphens; this creates concrete length and character boundaries for R5.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>For R2, the minimal scenario uses one reader and one book twice. A distinct R4 scenario uses two readers and proves one reader cannot accidentally receive the other’s records. A proposed “real user cannot impersonate another” case would be misleading: X-Reader is intentionally not an authentication system. Record that as an out-of-scope security concern, not a fabricated supported role.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Given R1–R5 and the reader-format constraint, draft at most eight distinct scenarios. Include a requirement ID, precondition, action, expected result, and independent evidence. Separate API checks from UI checks. Flag unsupported authentication assumptions. Explain which risk each case adds.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Write three scenarios yourself, then ask AI for gaps. Merge only justified additions. Include one unavailable-book scenario and one malformed JSON request. Mark which can run automatically against the supplied lab and which require capabilities outside it. Keep the approved scenario list beside the task brief.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>For every case, ask “what defect would this detect?” Remove duplicates that add no risk coverage. Check that a negative case also checks absence of an unintended write through a successful scoped read, rather than treating a failed query as empty state.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A compact scenario matrix with R1–R5 coverage and explicit exclusions.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>AI proposes an administrator approval workflow. What must happen before you automate it?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>Locate an approved requirement and an actual supported role. Neither exists in this demo. Reject the proposed case for this scope rather than adding fictional UI steps. For a real product, resolve the requirement gap with its owner.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_05.html">← 05 — Meet the runnable demo application</a><a rel="next" href="CHAPTER_07.html">07 — Explore with browser tools and MCP →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag " aria-current="page" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

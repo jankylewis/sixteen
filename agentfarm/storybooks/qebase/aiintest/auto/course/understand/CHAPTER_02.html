@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>02 — Models, assistants, and agents · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag " aria-current="page" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 2 OF 21</span></p>
+<article><h1>02 — Models, assistants, and agents</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">GOAL<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">TOOL CALL<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">OBSERVATION<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>An annotated interaction trace and a seven-term glossary that you can explain without product-specific names.</p>
+<h2>Know</h2>
+<p>A language model generates output from supplied context using learned parameters. Training changes parameters; inference uses them. Tokens are encoded units, not reliably whole words. The context window limits what fits in an interaction. An assistant is an application around a model. In this book an agent can choose its next action from observations; a fixed workflow follows predefined control flow. A tool call is a request for runtime software to do something, not proof that it happened.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>“I will open the page” is a plan. A browser navigation request is an action attempt. A returned page title is an observation. “The reservation is persisted” still requires inspecting a record. An assistant that chooses a read query after a timeout shows adaptive control; a script that always runs the same steps is a workflow, even if a model wrote it.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Explain this trace to a new QE: user asks to test duplicates; assistant proposes a browser click; runtime returns a timeout; assistant requests a scoped record query. Label goal, proposal, tool execution, observation, and next decision. Do not invent the query result.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Use the trace in the prompt. Draw five boxes and connect them in execution order. Add where authorization is checked and where the agent can stop. Keep a small glossary for model, prompt, token, context, tool, workflow, and agent. Use each term in a sentence about testing.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Your drawing must place execution outside the model itself. It must distinguish an unavailable response from an empty successful query. Ask the assistant for a contrasting fixed workflow and inspect whether it really removes adaptive decisions.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>An annotated interaction trace and a seven-term glossary that you can explain without product-specific names.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>A chatbot can call a browser and adapt to failures. Must it remain “only a chatbot” because the interface is conversational?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>No. The interface and control flow are different dimensions. It may be a chat interface to an agent. Inspect who chooses actions, what the runtime executes, and which boundaries are enforced. A product label alone does not answer those questions.</p>
+</details>
+<h2>Further reading</h2>
+<p><a href="https://www.anthropic.com/research/building-effective-agents">Building effective agents</a> explains the workflow/agent distinction.</p></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_01.html">← 01 — Where AI helps a QE</a><a rel="next" href="CHAPTER_03.html">03 — Give AI a clear task →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag " aria-current="page" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag c" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

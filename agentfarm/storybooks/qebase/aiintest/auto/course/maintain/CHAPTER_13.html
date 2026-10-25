@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>13 — Investigate a red test · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 13 OF 21</span></p>
+<article><h1>13 — Investigate a red test</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">FAILURE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">HYPOTHESIS<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">NARROW CHECK<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A failure dossier: expected behavior, actual witness, hypotheses, discriminating check, conclusion, and limitation.</p>
+<h2>Know</h2>
+<p>A red result is an observation, not a root cause. Classify competing explanations: product behavior, automation logic, test data, or environment. A discriminating check produces different observations under competing hypotheses. Preserve the exact run and scope before editing anything. An unresolved result is appropriate when the evidence cannot distinguish causes.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>You see two records. Hypothesis A is duplicate insertion. Hypothesis B is a query counting all readers. Read the scoped response and inspect its identities. If both records belong to the same reader/book in a fresh server, the duplicate hypothesis is stronger. If the query included unrelated readers, investigate automation scope. Both faults could coexist.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Investigate the failing output from npm run prove. List product, automation, data, and environment hypotheses. For each, name a discriminating observation. Use the supplied records and API contract; do not change code yet. Mark facts, hypotheses, and missing evidence explicitly.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Run the targeted faulty test and capture its output. The command is intentionally red:</p>
+<pre><code>
+LAB_FAULT=duplicate node --test --test-name-pattern=&quot;duplicate rejection&quot; tests/api.test.mjs
+
+</code></pre>
+<p>This environment-prefix syntax is for macOS/Linux shells. On PowerShell set $env:LAB_FAULT=&quot;duplicate&quot; before the command and remove it afterward. Record which assertion failed and which earlier checks passed.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Your diagnosis must explain both the correct-looking rejection and the incorrect stored state. Do not label every red result a “flake.” If your actual failure is an unavailable port or missing dependency, diagnose that observed failure first rather than copying the example verdict.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A failure dossier: expected behavior, actual witness, hypotheses, discriminating check, conclusion, and limitation.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>The test passes alone but fails in parallel. What do you compare first?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>Compare starting state, shared identities, shared reset operations, port ownership, and resource timing. Preserve parallel execution while isolating one suspected cause. “Passed alone” narrows the conditions; it does not prove the product or test is universally correct.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="../automate/CHAPTER_12.html">← 12 — Make execution reliable</a><a rel="next" href="CHAPTER_14.html">14 — Repair without hiding the defect →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag c" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

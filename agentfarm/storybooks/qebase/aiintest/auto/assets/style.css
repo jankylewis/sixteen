@@ -21,7 +21,7 @@ li{margin:10px 0}ul{padding-left:24px}
 .jump .row+.row{margin-top:14px}.jump .row{gap:10px 14px}
 header[aria-label='Presentation header']{position:sticky;top:0;z-index:10;display:flow-root;background:var(--bg);padding:12px 0}
 .brand{position:absolute;right:calc(100% + 12px);top:50%;transform:translateY(-50%);white-space:nowrap}
-.eyebrow{margin-top:18px}
+#content{scroll-margin-top:260px}.eyebrow{margin-top:18px}
 .dia{background:var(--panel2);border:3px solid var(--line);padding:26px 18px;margin:22px 0;display:flex;flex-direction:column;align-items:center}
 .node{font-family:var(--pixel);font-size:10px;line-height:1.9;text-align:center;background:var(--bg);border:3px solid var(--cyan);color:var(--cyan);padding:14px 16px;min-width:130px;max-width:220px;box-shadow:4px 4px 0 rgba(0,0,0,.35)}
 .node small{display:block;font:12px/1.7 var(--mono);color:var(--dim);margin-top:8px;letter-spacing:0}
@@ -33,7 +33,7 @@ header[aria-label='Presentation header']{position:sticky;top:0;z-index:10;displa
 .cards a{display:block;font:11px/1.9 var(--pixel);color:var(--amber);margin-bottom:10px;text-decoration:none}
 .cards li:focus-within,.cards li:hover{border-color:var(--amber)}
 code{background:var(--panel2);border:1px solid var(--line);padding:2px 6px;font-size:14px;color:var(--amber);overflow-wrap:anywhere}
-pre{background:var(--panel2);border:3px solid var(--line);padding:16px;overflow-x:auto;font-size:13px;line-height:1.7}pre code{border:0;padding:0;font-size:inherit}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--panel2);border:3px solid var(--line);padding:16px;overflow-x:auto;font-size:13px;line-height:1.7}pre code{border:0;padding:0;font-size:inherit}
 summary{cursor:pointer;font:11px/1.9 var(--pixel);color:var(--green)}details[open] summary{margin-bottom:18px}
 .steps{display:flex;justify-content:space-between;gap:22px;margin-top:48px;border-top:3px solid var(--line);padding-top:18px;font:10px/1.9 var(--pixel)}.steps>*{max-width:48%}.steps a{text-decoration:none}
 footer{font-size:12px;color:var(--dim);margin-top:32px}
