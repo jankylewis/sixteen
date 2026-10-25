@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>03 — Give AI a clear task · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag " aria-current="page" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 3 OF 21</span></p>
+<article><h1>03 — Give AI a clear task</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">CONTEXT<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">BOUNDED TASK<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">DELIVERABLE<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A reusable task-brief template and one filled example for duplicate prevention.</p>
+<h2>Know</h2>
+<p>A useful task brief includes goal, evidence, scope, constraints, output format, and completion criteria. Context is the material the assistant can actually access, not everything you know. Retrieval selects relevant stored material; it can return stale documents. Persistent notes help only when loaded and checked. Supply the smallest relevant requirement and failure artifact before adding a whole repository. Never include credentials or raw production data in a learning prompt.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>“Automate the library” invites assumptions about authentication, stock, and technology. “Draft a duplicate-reservation test for R2; use synthetic reader qe-one; inspect stored records; do not modify application code” defines a reviewable task. A timeout should be reported as unresolved unless readback establishes the effect. JSON output can make a result easy to parse without making it true.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Goal: draft one API test for R2. Evidence: R2 says a second reservation for the same reader/book returns 409 and leaves one stored record. Scope: local disposable demo only. Constraints: no application edits; do not weaken assertions. Output: preconditions, requests, expected responses, independent readback, and unknowns. Completion: a reviewed draft, not a claimed execution.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Send the brief, then deliberately omit the response code in a second version. Compare whether the assistant flags the missing contract or invents a code. Save the stronger prompt and one example of an unsupported assumption. Later chapters will provide the real API and the exact executable test.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Check that every expected value comes from the supplied requirement. If the assistant fills a gap, ask it to label the assumption explicitly. Do not approve a plan whose definition of success is only “no error occurred.”</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A reusable task-brief template and one filled example for duplicate prevention.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Add a stop condition for missing readback access without telling the assistant to abandon all useful investigation.</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>Allow it to collect available responses and record the missing capability, but require an unresolved stored-state verdict. It may propose the next check. It cannot substitute a success toast for the missing independent witness.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_02.html">← 02 — Models, assistants, and agents</a><a rel="next" href="CHAPTER_04.html">04 — Review AI work before trusting it →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_01.html">01 · AI + QE</a><a class="tag c" href="CHAPTER_02.html">02 · AGENTS</a><a class="tag " aria-current="page" href="CHAPTER_03.html">03 · BRIEFS</a><a class="tag c" href="CHAPTER_04.html">04 · REVIEW</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

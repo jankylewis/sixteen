@@ -1,0 +1,46 @@
+name: QE storybook
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify published pages match Markdown
+        run: node agentfarm/storybooks/qebase/aiintest/auto/assets/build.mjs --check
+      - name: Verify links and book conventions
+        run: node agentfarm/storybooks/qebase/aiintest/auto/assets/verify.mjs
+      - name: Exercise verifier failure cases
+        run: node --test agentfarm/storybooks/qebase/aiintest/auto/assets/test.mjs
+      - name: Install pinned learning lab dependencies
+        working-directory: agentfarm/storybooks/qebase/aiintest/auto/lab
+        run: npm ci
+      - name: API and harness contracts
+        working-directory: agentfarm/storybooks/qebase/aiintest/auto/lab
+        run: npm test
+      - name: Prove the test detects the teaching defect
+        working-directory: agentfarm/storybooks/qebase/aiintest/auto/lab
+        run: npm run prove
+      - name: Install test browser
+        working-directory: agentfarm/storybooks/qebase/aiintest/auto/lab
+        run: npx playwright install --with-deps chromium
+      - name: Browser journey and course reader
+        working-directory: agentfarm/storybooks/qebase/aiintest/auto/lab
+        run: npx playwright test --config tools/playwright.config.mjs
+      - name: Retain synthetic browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qe-learning-browser-evidence
+          path: agentfarm/storybooks/qebase/aiintest/auto/lab/test-results/
+          retention-days: 7

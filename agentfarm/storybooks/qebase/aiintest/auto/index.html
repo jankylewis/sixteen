@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>AI in test automation · Sixteen QE</title><link rel="stylesheet" href="assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="index.html">HOME</a></div><div class="row"><a class="tag g" href="course/understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="course/investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="course/automate/index.html">3 · AUTOMATE</a><a class="tag g" href="course/maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="course/reusable/index.html">5 · REUSABLE</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">AI IN AUTOMATION</span></p>
+<article><h1>AI in test automation</h1><div class="dia" role="group" aria-label="Learning path"><div class="row"><div class="node mm">UNDERSTAND<small>AI and your task</small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">AUTOMATE<small>observe, test, verify</small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">REUSE<small>maintain and package</small></div></div><p class="caption">Learn the ideas first. Then design the implementation.</p></div>
+<p>One small application. Twenty-one chapters. Learn to use AI to create, verify, and maintain trustworthy tests.</p>
+<h2>Start here</h2>
+<p>You are a QE learning to apply AI, not a model researcher. Begin with four short foundations chapters, explore the local demo, and run your first automated test by Chapter 10. Each chapter contains a starter prompt, practical task, independent verification, deliverable, and exercise with an answer guide. Budget 20–40 minutes per chapter; installation and capstone work may take longer.</p>
+<p>An AI assistant is useful for the prompts but is not bundled or required to run the demo. If you rehearse without one, label the work as manual practice. Never fabricate a tool result or claim a scripted replay called a model.</p>
+<h2>Five parts</h2>
+<ul class="cards">
+<li><a href="course/understand/index.html">Part 1 — Understand your AI assistant</a>: chapters 1–4.</li>
+<li><a href="course/investigate/index.html">Part 2 — Investigate before automating</a>: chapters 5–8.</li>
+<li><a href="course/automate/index.html">Part 3 — Build your first trustworthy test</a>: chapters 9–12.</li>
+<li><a href="course/maintain/index.html">Part 4 — Diagnose and maintain</a>: chapters 13–16.</li>
+<li><a href="course/reusable/index.html">Part 5 — Make the workflow reusable with agents</a>: chapters 17–21.</li>
+</ul>
+<h2>Your working materials</h2>
+<p>The runnable lab is at agentfarm/storybooks/qebase/aiintest/auto/lab/ in this repository. Chapter 5 gives installation and startup steps. Use Node.js 22 or newer, npm, Git, a terminal, and a browser. API exercises need no external service. The browser test uses Playwright Chromium, installed once. This JavaScript teaching lab does not select Sixteen’s future backend language.</p>
+<p>Keep commands and observations in your own learning notebook. Store temporary test outputs in ignored learning-output or test-results directories; do not publish secrets, unrelated browser captures, or production data. All scenarios use fictional books and synthetic readers.</p>
+<h2>Course requirements</h2>
+<ul class="cards">
+<li>R1: the first reservation of available book-1 by a valid reader returns 201 and creates one record.</li>
+<li>R2: a second reservation for that same pair returns 409 and creates no additional record.</li>
+<li>R3: unavailable book-2 returns 409 and creates no record.</li>
+<li>R4: GET reservations returns only records for the supplied synthetic X-Reader.</li>
+<li>R5: malformed JSON, invalid reader IDs, unknown books, or unexpected fields return 400 without a write. Reader IDs contain 1–40 letters, digits, underscores, or hyphens.</li>
+</ul>
+<p>X-Reader is test-data partitioning, not authentication. Data is in memory and disappears on restart. This sandbox deliberately does not teach production identity, capacity allocation, or durable storage.</p>
+<h2>Finish with evidence</h2>
+<p>Your capstone is a test change with scenario traceability, live investigation, meaningful assertions, relevant failing-first proof, and a reviewable handoff. A high test count, confident AI answer, or generated plan is not a substitute. Publishing and merging require the repository owner’s authorization.</p></article></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="index.html">HOME</a></div><div class="row"><a class="tag g" href="course/understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="course/investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="course/automate/index.html">3 · AUTOMATE</a><a class="tag g" href="course/maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="course/reusable/index.html">5 · REUSABLE</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

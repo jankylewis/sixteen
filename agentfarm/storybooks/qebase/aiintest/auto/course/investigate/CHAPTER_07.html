@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>07 — Explore with browser tools and MCP · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag " aria-current="page" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 7 OF 21</span></p>
+<article><h1>07 — Explore with browser tools and MCP</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">LIVE PAGE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">REAL LOCATOR<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">EVIDENCE<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A live manual walkthrough and a locator notebook with source, time, and page identity.</p>
+<h2>Know</h2>
+<p>A selector identifies an element for automation. Prefer observable roles and accessible names when they express the intended control. A browser tool or MCP server may expose a page snapshot, inspection, click, and screenshot. MCP standardizes capability exchange; the tool names and permissions depend on your installed server. Do not paste fictional MCP calls. List capabilities and use the actual tool schema.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>An AI guesses #submit-book. The page actually exposes a button named “Reserve The Test Garden.” The guess has no evidence. Inspect the local page and find its label. A read of the supplied HTML can help explain implementation, but a live observation confirms the control is on the loaded page. If no browser connector is installed, perform the same exploration manually and record that fact.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Explore only http://127.0.0.1:4173 using the browser tools available in this session. First list the relevant capabilities. Capture the reader input label, available Reserve button name, unavailable button state, and result region. Do not invent selectors. Use synthetic reader qe-explore and report evidence for each observation.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Start the demo from Chapter 5. Inspect the page through your assistant’s actual browser connector, or browser developer tools if unavailable. Verify the input label Reader ID, role button/name Reserve The Test Garden, and role status. Observe the unavailable button before attempting a click. Record one exact locator per intended element; keep screenshots free of unrelated user tabs.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Check each locator identifies exactly the intended element. A locator that returns zero elements cannot prove a button is disabled. Locate the specific unavailable control, then inspect its disabled property. The runnable UI test in Chapter 12 uses these observed accessible names.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A live manual walkthrough and a locator notebook with source, time, and page identity.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Your agent says “element not found, therefore disabled.” How do you correct the investigation?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>First establish page load and the intended element’s existence. Then inspect its property. Missing and disabled are different states. If the page cannot be loaded, report an environment or access limitation instead of a product verdict.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_06.html">← 06 — Turn requirements into scenarios</a><a rel="next" href="CHAPTER_08.html">08 — Prepare trustworthy test data →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag " aria-current="page" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

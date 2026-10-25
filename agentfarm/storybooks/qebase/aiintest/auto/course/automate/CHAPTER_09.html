@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>09 — Choose the right test layer · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_09.html">09 · LAYERS</a><a class="tag c" href="CHAPTER_10.html">10 · FIRST TEST</a><a class="tag c" href="CHAPTER_11.html">11 · ASSERTIONS</a><a class="tag c" href="CHAPTER_12.html">12 · RELIABILITY</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 9 OF 21</span></p>
+<article><h1>09 — Choose the right test layer</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">RISK<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">RIGHT LAYER<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">RIGHT WITNESS<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A two-layer automation plan with a reason for each chosen layer.</p>
+<h2>Know</h2>
+<p>A unit test checks a small component; an API or integration test checks a boundary; a UI test checks a browser interaction. The layer should match the behavior you need to prove. Duplicate storage is best witnessed through requests and state readback. Button accessibility and disabled state need UI evidence. A fake backend can test a frontend response branch but cannot prove the actual backend prevents duplicates.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>An AI generates ten browser tests for response codes. This adds browser setup without strengthening those API contracts. Use a compact API suite for R1–R5 and a browser test for the visible reservation journey. Preserve a readback even in that browser test: a green toast alone can miss a backend defect.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+For each approved Pocket Library scenario, recommend API or browser coverage and justify the witness. Keep one browser journey for the visible reservation behavior. Identify any claim a mocked backend would fail to support. Do not optimize only for test count.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Open tests/api.test.mjs and tests/browser.spec.mjs without modifying them. Map each assertion to a requirement. Sketch where requests cross the real HTTP boundary and where browser selectors operate. Mark the supplied server’s in-memory limitation so readers do not confuse this integration with production persistence.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>An API test must make actual HTTP requests to the started server; it should not call the private duplicate-check function. The UI test must use the rendered controls. Check whether its state query scopes the same reader used in the page.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A two-layer automation plan with a reason for each chosen layer.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Where would you test a bug caused by the server returning the wrong status while storing the right record?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>At the API boundary: assert the response and independently inspect records. A unit test of the storage collection would miss the response mapping defect. Use a UI test as well only if you need to prove how the wrong response affects the user.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="../investigate/CHAPTER_08.html">← 08 — Prepare trustworthy test data</a><a rel="next" href="CHAPTER_10.html">10 — Generate and run one test →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_09.html">09 · LAYERS</a><a class="tag c" href="CHAPTER_10.html">10 · FIRST TEST</a><a class="tag c" href="CHAPTER_11.html">11 · ASSERTIONS</a><a class="tag c" href="CHAPTER_12.html">12 · RELIABILITY</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

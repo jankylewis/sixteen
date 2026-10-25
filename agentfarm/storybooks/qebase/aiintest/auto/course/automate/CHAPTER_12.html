@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>12 — Make execution reliable · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_09.html">09 · LAYERS</a><a class="tag c" href="CHAPTER_10.html">10 · FIRST TEST</a><a class="tag c" href="CHAPTER_11.html">11 · ASSERTIONS</a><a class="tag " aria-current="page" href="CHAPTER_12.html">12 · RELIABILITY</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 12 OF 21</span></p>
+<article><h1>12 — Make execution reliable</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">LOCATE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">AWAIT STATE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">VERIFY<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A browser test run, any retained failure trace, and a short reliability review.</p>
+<h2>Know</h2>
+<p>Browser automation must wait for observable conditions rather than arbitrary sleep durations. Playwright locators identify controls and its web assertions retry while waiting for a condition. A retry of an observation is different from repeating a write. In this lab tests use retries: 0 so an intermittent failure is visible. Fresh servers keep parallel tests independent.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>Bad draft: click Reserve, sleep two seconds, read a cached success label. Improved draft: click the exact accessible button, await the status Reserved, click again, await Duplicate reservation, then query actual scoped records. If the first write times out, inspect state before deciding whether to repeat it.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Review tests/browser.spec.mjs. Explain each locator, awaited assertion, and independent readback. Identify where a fixed sleep or an unscoped selector would weaken the test. Keep retries disabled and preserve R2 while improving diagnostics.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Install the matching browser once, then execute the supplied browser test. A browser download needs network access; the test itself uses the local demo.</p>
+<pre><code>
+npx playwright install chromium
+
+npm run test:ui
+
+</code></pre>
+<p>Run it again with two workers and repeated cases to check the isolated setup, not to erase a failure:</p>
+<pre><code>
+npm run test:ui -- --workers=2 --repeat-each=2
+
+</code></pre>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Both runs must pass without retries. If a run fails, retain its trace in test-results before investigating. Confirm the unavailable control exists and is disabled. The record query must use qe-browser, matching the page input. Repetition supports stability for these conditions only.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A browser test run, any retained failure trace, and a short reliability review.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Why can a long fixed sleep both slow the suite and still fail occasionally?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>It waits even when the condition is already ready, yet can still expire before slower environments are ready. Wait for the intended state with a bounded timeout. Increasing sleeps does not repair wrong identity, missing data, or an actual product defect.</p>
+</details>
+<h2>Further reading</h2>
+<p><a href="https://playwright.dev/docs/intro">Playwright installation</a> and <a href="https://playwright.dev/docs/test-assertions">web assertions</a> describe setup and observable-state assertions.</p></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_11.html">← 11 — Make assertions that detect defects</a><a rel="next" href="../maintain/CHAPTER_13.html">13 — Investigate a red test →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_09.html">09 · LAYERS</a><a class="tag c" href="CHAPTER_10.html">10 · FIRST TEST</a><a class="tag c" href="CHAPTER_11.html">11 · ASSERTIONS</a><a class="tag " aria-current="page" href="CHAPTER_12.html">12 · RELIABILITY</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

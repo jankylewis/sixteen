@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>14 — Repair without hiding the defect · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag " aria-current="page" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 14 OF 21</span></p>
+<article><h1>14 — Repair without hiding the defect</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">KEEP ORACLE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">REPAIR<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">REGRESSION<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A repair explanation and a regression record that names what was preserved.</p>
+<h2>Know</h2>
+<p>A repair should restore the requirement while retaining a test that detects the original defect. Review the smallest relevant diff first. A product defect belongs in product behavior; an automation defect belongs in the test or driver. Editing fixtures is justified only by a changed contract or an incorrect fixture, not by a wish to obtain green output.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>The lab intentionally keeps the duplicate fault as a teaching switch. Do not delete the fault or weaken the test to complete the course. In an actual faulty implementation, the repair would prevent insertion when a matching reservation exists. In this lab, compare the fault branch with the default behavior and explain that difference.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Explain the minimal product repair for duplicate insertion without changing R2 or its test. Show why the guard must protect the write itself. Treat the lab fault switch as an intentional teaching feature to retain. Run the same regression suite against both modes and report the evidence.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Inspect the duplicate condition and insertion statement in app/server.mjs. Trace both modes on paper. Run npm run prove and npm test. If you authored a learner test, run it too. For a code-edit exercise, use a disposable copy of the app and intentionally remove duplicate prevention, then restore it; keep this course checkout unchanged.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>The unchanged readback assertion must fail on the faulty behavior and pass after restoration. Review the diff for skipped tests, broadened assertions, changed identities, and new retries. Confirm other requirements still pass before proposing a merge.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A repair explanation and a regression record that names what was preserved.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>AI changes expected status 409 to 201 and says “the implementation is the source of truth.” What is wrong?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>The approved requirement defines expected behavior. Implementation is evidence of actual behavior. Changing the expectation to match the defect erases the test’s purpose. If product intent truly changes, obtain that requirement change explicitly and update the test with traceability.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_13.html">← 13 — Investigate a red test</a><a rel="next" href="CHAPTER_15.html">15 — Run in CI and read the results →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_13.html">13 · DIAGNOSE</a><a class="tag " aria-current="page" href="CHAPTER_14.html">14 · REPAIR</a><a class="tag c" href="CHAPTER_15.html">15 · CI</a><a class="tag c" href="CHAPTER_16.html">16 · MAINTAIN</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

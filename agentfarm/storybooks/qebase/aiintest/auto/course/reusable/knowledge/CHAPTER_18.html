@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>18 — Define lawsets and quality gates · Sixteen QE</title><link rel="stylesheet" href="../../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_17.html">17 · SKILLS</a><a class="tag " aria-current="page" href="CHAPTER_18.html">18 · LAWS</a><a class="tag c" href="CHAPTER_19.html">19 · TOOLS</a><a class="tag c" href="../execution/CHAPTER_20.html">20 · HARNESS</a><a class="tag c" href="../execution/CHAPTER_21.html">21 · CAPSTONE</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 18 OF 21</span></p>
+<article><h1>18 — Define lawsets and quality gates</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">RULE<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">GUARD<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">NEGATIVE TEST<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A small lawset with scope, executable enforcement, and independent verification for each enforced rule.</p>
+<h2>Know</h2>
+<p>A lawset is Sixteen’s term for scoped operating rules; it is not an industry protocol. Written rules guide behavior. Executable guards reject prohibited operations. Quality gates collect evidence before accepting a change. HIGH-QUALITY means defensible outcomes; GREAT START establishes sound contracts early; SIMPLE-FIRST avoids unnecessary machinery. HD, uppercase Markdown, and the 200-line cap support navigable documentation but do not prove runtime correctness.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>A prompt says “do not write before inspecting.” The supplied harness enforces that sequence and refuses a reserve action without a baseline. It also rejects unknown fields, preventing a model from adding an arbitrary destination URL. A test exercises those refusals against the real session boundary. The rule is therefore more than a sentence in a skill.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Review tools/harness.mjs and tests/harness.test.mjs. Map each rule to its guard and an observable negative test. Identify any rule that remains guidance only. Do not equate passing structural checks with safe behavior in every environment.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Run the harness tests directly:</p>
+<pre><code>
+node --test tests/harness.test.mjs
+
+</code></pre>
+<p>Read the cases for write-before-baseline, arbitrary commands, extra destination fields, exhausted budget, early finish, and missing final readback. Write a rule-to-evidence matrix. Propose one additional refusal case and explain what side effect must remain absent.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>An invalid request must be rejected at the execution boundary, not merely described as bad by the model. After a terminal refusal the session must not accept another action. A finish request without sufficient evidence must stay unresolved rather than become a pass.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A small lawset with scope, executable enforcement, and independent verification for each enforced rule.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>Does “all files are below 200 lines” prove the agent cannot publish without permission?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>No. That is a documentation constraint. Publication requires a separate permission boundary and a test of its enforcement. In this lab the harness exposes no publishing tool at all. Do not claim that absence proves every future adapter will be equally constrained.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="CHAPTER_17.html">← 17 — Package the workflow as skills</a><a rel="next" href="CHAPTER_19.html">19 — Connect tools through CLI, MCP, and AXI →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="../../investigate/index.html">2 · INVESTIGATE</a><a class="tag g" href="../../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../index.html">5 · REUSABLE</a></div><div class="row"><a class="tag c" href="CHAPTER_17.html">17 · SKILLS</a><a class="tag " aria-current="page" href="CHAPTER_18.html">18 · LAWS</a><a class="tag c" href="CHAPTER_19.html">19 · TOOLS</a><a class="tag c" href="../execution/CHAPTER_20.html">20 · HARNESS</a><a class="tag c" href="../execution/CHAPTER_21.html">21 · CAPSTONE</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>

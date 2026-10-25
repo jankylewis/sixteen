@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A beginner's guide to AI agents and evidence-based quality engineering.">
+<title>05 — Meet the runnable demo application · Sixteen QE</title><link rel="stylesheet" href="../../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a><div class="wrap">
+<header aria-label="Presentation header"><a class="tag brand" href="../../index.html">SIXTEEN</a><nav class="box jump" aria-label="Jump to page (top)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav></header>
+<main id="content" tabindex="-1"><p class="eyebrow"><span class="tag">CHAPTER 5 OF 21</span></p>
+<article><h1>05 — Meet the runnable demo application</h1><div class="dia" role="group" aria-label="Concept map"><div class="row"><div class="node mm">START DEMO<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node ">EXPLORE UI<small></small></div><span class="arrow" aria-hidden="true">→</span><div class="node mate">RECORD BASELINE<small></small></div></div><p class="caption">A concept map, not a record of an executed run.</p></div>
+<h2>Outcome</h2>
+<p>A short environment record: runtime version, start command, local URL, synthetic reader, and initial observations.</p>
+<h2>Know</h2>
+<p>Pocket Library is supplied in the book’s lab directory. It is a learning sandbox, not a production service. It binds to loopback, stores records in memory, and resets on restart. X-Reader partitions synthetic records; it is not authentication. Two books are supplied: book-1 is available and book-2 unavailable. No login, email, external database, or AI subscription is needed to run it. Node runs JavaScript outside the browser. npm installs the pinned development packages and launches named scripts from package.json. A terminal is where you enter the commands; its current directory determines which package those commands use.</p>
+<section class="box cyan">
+<h2>Worked example</h2>
+<p>R1: first reservation of book-1 for a reader returns 201 and creates one record. R2: repeating that pair returns 409 without another record. R3: an unavailable book returns 409 without a record. R4: reads are reader-scoped. R5: malformed input returns 400 without mutation. These are the approved v1 contracts for the labs; do not infer them from implementation code.</p>
+</section>
+<section class="box amber">
+<h2>Starter prompt</h2>
+<p>Copy this into your assistant after providing the named requirement or artifact. Treat its answer as a draft until checked.</p>
+<pre><code>
+Use the five Pocket Library requirements provided here. Help me prepare a manual exploration checklist. Keep X-Reader clearly labeled as a synthetic test partition, not login or authorization. Ask me for observations rather than fabricating a run.
+
+</code></pre>
+</section>
+<section class="box cyan">
+<h2>Do</h2>
+<p>Install Node.js 22 or newer and Git if needed. From the sixteen repository root, run the following commands. Keep the start command running in one terminal; use a second terminal for later tests. Open http://127.0.0.1:4173 in your browser. If the port is busy, identify your earlier demo before stopping it; do not kill an unknown service.</p>
+<pre><code>
+cd agentfarm/storybooks/qebase/aiintest/auto/lab
+
+npm ci
+
+npm start
+
+</code></pre>
+<p>Set Reader ID to qe-first. Click the available Reserve button, then Read my reservations. Press Ctrl+C in the server terminal and restart when you want a fresh baseline.</p>
+</section>
+<section class="box green">
+<h2>Verify</h2>
+<p>Observe “Reserved” and one record for qe-first/book-1 after the first click. Verify the unavailable-book button is disabled. Record what you actually see; startup output alone does not prove the UI works. npm ci needs registry access once; the running demo stays local.</p>
+</section>
+<section class="box green">
+<h2>Deliver</h2>
+<p>A short environment record: runtime version, start command, local URL, synthetic reader, and initial observations.</p>
+</section>
+<section class="box amber">
+<h2>Exercise</h2>
+<p>After restarting, should the old in-memory reservation still exist? What does that imply about what this demo can teach?</p>
+</section>
+<details class="box green"><summary>Reveal answer guide</summary>
+<p>No. This demo teaches interaction, assertions, and bounded execution; it does not prove durable storage or production authentication. State that limitation. Use a separate environment with the real persistence contract when applying these techniques to a real product.</p>
+</details></article><nav class="steps" aria-label="Chapter navigation"><a rel="prev" href="../understand/CHAPTER_04.html">← 04 — Review AI work before trusting it</a><a rel="next" href="CHAPTER_06.html">06 — Turn requirements into scenarios →</a></nav></main><nav class="box jump" aria-label="Jump to page (bottom)"><div class="row"><a class="tag" href="../../index.html">HOME</a></div><div class="row"><a class="tag g" href="../understand/index.html">1 · UNDERSTAND</a><a class="tag g" href="index.html">2 · INVESTIGATE</a><a class="tag g" href="../automate/index.html">3 · AUTOMATE</a><a class="tag g" href="../maintain/index.html">4 · MAINTAIN</a><a class="tag g" href="../reusable/index.html">5 · REUSABLE</a></div><div class="row"><a class="tag " aria-current="page" href="CHAPTER_05.html">05 · DEMO</a><a class="tag c" href="CHAPTER_06.html">06 · SCENARIOS</a><a class="tag c" href="CHAPTER_07.html">07 · EXPLORE</a><a class="tag c" href="CHAPTER_08.html">08 · DATA</a></div></nav>
+<footer>Sixteen · Public learning material · Try the exercise before revealing its answer.</footer>
+</div></body></html>
